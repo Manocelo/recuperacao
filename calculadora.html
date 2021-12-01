@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <input id="nome" type="text" placeholder="Nome">
+        </div>
+        <div>
+            <input id="valor" type="number" placeholder="valor">
+        </div>
+        <div>
+            <input id="horas" type="number" placeholder="horas">
+        </div>
+        <div>
+            <input id="bruto" type="number" placeholder="bruto">
+        </div>
+        <div>
+            <input id="irrf" type="number" placeholder="irrf">
+        </div>
+        <div>
+            <input id="gratificacao" type="number" placeholder="gratificacao">
+        </div>
+        <div>
+            <input id="liquido" type="number" placeholder="liquido">
+        </div>
+        <div class=buttom>
+            <button id=calcular onclick="calcular()">calcular</button>
+        </div>
+        <div class=buttom>
+            <button id=calcular onclick="bonus()">calcular</button>
+        </div>
+        <div class=buttom>
+            <button id=calcular onclick="imposto()">calcular</button>
+        </div>
+        <div class=buttom>
+            <button id=calcular onclick="liquido()">calcular</button>
+        </div>
+    </div>
+
+<script>
+
+
+const calcular = function(){
+    let valor = parseFloat (document.getElementById('valor').value)
+    let horas = parseFloat (document.getElementById('horas').value)
+    let bruto = valor * horas
+    document.getElementById('bruto').value = bruto
+
+    
+}
+
+const bonus = function() {
+    let bruto = parseFloat (document.getElementById('bruto').value)
+    let horas = parseFloat (document.getElementById('horas').value)
+   if (horas >= 155 && horas <= 165 ) {
+    gratificacao = 0.15;
+    document.getElementById('gratificacao').value = gratificacao
+   } else {
+    gratificacao = 0;
+    document.getElementById('gratificacao').value = gratificacao
+   }
+}
+
+const imposto = function() {
+    let bruto = parseFloat (document.getElementById('bruto').value)
+   if (bruto >= 2000) {
+    irrf = 0.15;
+    document.getElementById('irrf').value = irrf
+   } else {
+       irrf = 0;
+       document.getElementById('irrf').value = irrf
+   }
+}
+
+const liquido = function() {
+    let bruto = parseFloat (document.getElementById('bruto').value)
+    let gratificacao = parseFloat (document.getElementById('gratificacao').value)
+    let irrf = parseFloat (document.getElementById('irrf').value)
+
+    let liquido = bruto + (bruto * gratificacao) - (bruto * irrf)
+    document.getElementById('liquido').value = liquido
+}
+    </script>
+</body>
+</html>
